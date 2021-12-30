@@ -17,6 +17,7 @@ public class Game extends Canvas implements Runnable{
 	private Level level;
 	static boolean newGame = true;
 	public static boolean levelBuilder = false;
+	public static boolean started = false;
 	
 	
 	

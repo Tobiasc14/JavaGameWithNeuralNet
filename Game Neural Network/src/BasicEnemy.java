@@ -39,7 +39,7 @@ public class BasicEnemy extends GameObject {
 		g.setColor(Color.BLACK);
 		Graphics2D g2 = (Graphics2D) g;
 		
-		g2.draw(getBounds());
+		//g2.draw(getBounds());
 		
 		
 		g.setColor(Color.red);

@@ -22,7 +22,6 @@ public class Handler {
 					//If Enemy collides with a barrier					
 					if (tempObject.getID().equals(ID.Barrier)&& !(tempObject2.getID().equals(ID.Barrier)) &&tempObject2.getBounds().intersects(tempObject.getBounds())) {
 						//This will be what to do if the barrier intersects something else, may need to add a clause that the thing it intersects isn't a barrier
-						System.out.println("Made it here");
 						tempObject2.setX(tempObject2.x-tempObject2.getVelocityX());
 						if(tempObject.getBounds().intersects(tempObject2.getBounds())) {
 							tempObject2.setY(tempObject2.y-tempObject2.getVelocityY());

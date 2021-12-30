@@ -7,7 +7,7 @@ public class HUD {
 	private Handler handler;
 	private Level level;
 	long curTime = System.currentTimeMillis();
-	
+	int health = 100;
 	
 
 	public HUD(Handler handler, Level level) {
@@ -36,6 +36,15 @@ public class HUD {
 			g.drawString("Left click to place, right click to remove", Game.WIDTH/2-230,50);
 			g.drawString("Middle click mouse to switch what you place", Game.WIDTH/2-250,18+50);
 			g.drawString("Press S to start playing the game you made", Game.WIDTH/2-240,36+50);
+		}
+		if(Game.started) {
+			g.setColor(Color.red);
+			g.fillRect(10, 10, 200, 20);
+			g.setColor(Color.green);
+			g.fillRect(10, 10, health, 20);
+			g.setColor(Color.white);
+			g.drawRect(9, 9, 201, 21);
+			
 		}
 	}
 
