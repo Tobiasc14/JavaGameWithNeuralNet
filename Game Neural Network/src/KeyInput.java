@@ -31,8 +31,13 @@ public class KeyInput extends KeyAdapter{
 		
 		if(Game.newGame && key == KeyEvent.VK_B) {
 			Game.newGame = false;
-			Game.levelBuilder =true;
+			Game.levelBuilder = true;
 		}
+		if(Game.levelBuilder && key == KeyEvent.VK_S) {
+			Game.newGame = false;
+			Game.levelBuilder = false;
+		}
+
 
 /**
 		for (int i =0; i < handler.object.size();i++){
