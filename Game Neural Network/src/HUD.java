@@ -29,7 +29,7 @@ public class HUD {
 			g.drawString("Press B to Build a new Level", Game.WIDTH/2-250,Game.HEIGHT/2);
 			g.drawString("Press S to Start existing levels", Game.WIDTH/2-270,Game.HEIGHT/2+40);
 		}
-		if(Game.levelBuilder) {
+		else if(Game.levelBuilder) {
 			g.setColor(Color.orange);
 			Font font1 = new Font("Verdana", Font.BOLD, 18);
 			g.setFont(font1);
@@ -37,13 +37,13 @@ public class HUD {
 			g.drawString("Middle click mouse to switch what you place", Game.WIDTH/2-250,18+50);
 			g.drawString("Press S to start simulating the game you made", Game.WIDTH/2-240,36+50);
 		}
-		if (Game.simulating) {
+		else if (Game.simulating) {
 			g.setColor(Color.orange);
 			Font font1 = new Font("Verdana", Font.BOLD, 18);
 			g.setFont(font1);
-			g.drawString("Press P to stop simulating game", Game.WIDTH/2-200,50);
+			g.drawString("Press S again to stop simulating game", Game.WIDTH/2-200,50);
 		}
-		if(Game.started) {
+		else if(Game.started) {
 			g.setColor(Color.red);
 			g.fillRect(10, 10, 200, 20);
 			g.setColor(Color.green);

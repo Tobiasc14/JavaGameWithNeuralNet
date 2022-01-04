@@ -1,8 +1,8 @@
 
 
 import java.awt.event.KeyAdapter;
-import java.awt.Graphics;
 import java.awt.event.KeyEvent;
+import java.util.concurrent.TimeUnit;
 
 public class KeyInput extends KeyAdapter{
 	
@@ -33,12 +33,13 @@ public class KeyInput extends KeyAdapter{
 			Game.newGame = false;
 			Game.levelBuilder = true;
 		}
-		if(Game.levelBuilder && key == KeyEvent.VK_S) {
+		else if(Game.levelBuilder && key == KeyEvent.VK_S) {
+			
 			Game.newGame = false;
 			Game.levelBuilder = false;
 			Game.simulating = true;
 		}
-		if(Game.simulating && key == KeyEvent.VK_P) {
+		else if(Game.simulating && key == KeyEvent.VK_S) {
 			
 			Game.levelBuilder = true;
 			Game.simulating = false;
