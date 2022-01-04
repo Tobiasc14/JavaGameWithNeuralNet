@@ -8,7 +8,7 @@ public class Handler {
 	
 	
 	public void tick() {
-		if(Game.levelBuilder) {
+		if(Game.levelBuilder && Game.started ==false) {
 			
 		}
 		else {

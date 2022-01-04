@@ -23,6 +23,7 @@ public class BasicEnemy extends GameObject {
 
 	
 	public void tick() {
+		//This reverses the enemies motion when it collides with edge of window
 		if(x>Game.WIDTH-32||x<0){
 			velocityX=-velocityX;
 		}

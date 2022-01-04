@@ -19,9 +19,7 @@ public class Barrier extends GameObject{
 
 	@Override
 	public void tick() {
-		//These aren't necessary
-		
-		
+			
 	}
 
 	@Override

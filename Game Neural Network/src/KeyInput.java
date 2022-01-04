@@ -36,7 +36,12 @@ public class KeyInput extends KeyAdapter{
 		if(Game.levelBuilder && key == KeyEvent.VK_S) {
 			Game.newGame = false;
 			Game.levelBuilder = false;
-			Game.started = true;
+			Game.simulating = true;
+		}
+		if(Game.simulating && key == KeyEvent.VK_P) {
+			
+			Game.levelBuilder = true;
+			Game.simulating = false;
 		}
 
 

@@ -18,6 +18,7 @@ public class Game extends Canvas implements Runnable{
 	static boolean newGame = true;
 	public static boolean levelBuilder = false;
 	public static boolean started = false;
+	public static boolean simulating = false;
 	
 	
 	
@@ -126,7 +127,7 @@ public class Game extends Canvas implements Runnable{
 		 //it creates by creating a buffer
 		 BufferStrategy bs = this.getBufferStrategy();
 		 if(bs == null){
-			 this.createBufferStrategy(3);
+			 this.createBufferStrategy(4);
 			 return;
 		 }
 		 
