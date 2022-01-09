@@ -13,7 +13,8 @@ public class HUD {
 	Font smallText = new Font("Verdana", Font.BOLD, 18);
 	public String buildLevel = "Build a new Level";
 	public String startLevels = "Start existing levels";;
-	
+	public Rectangle buildLevelButton;
+	public Rectangle startLevelsButton;
 	
 
 	public HUD(Handler handler, Level level) {
@@ -44,7 +45,7 @@ public class HUD {
 			g.setColor(Color.black);
 			g.drawString(buildLevel, Game.WIDTH/2-textWidth/2,Game.HEIGHT/2);
 			
-			Rectangle buildLevel = new Rectangle(Game.WIDTH/2-textWidth/2-4,Game.HEIGHT/2-20,textWidth+8,26);
+			buildLevelButton = new Rectangle(Game.WIDTH/2-textWidth/2-4,Game.HEIGHT/2-20,textWidth+8,26);
 			g.setColor(Color.orange);
 			g.drawRect(Game.WIDTH/2-textWidth/2-4,Game.HEIGHT/2-20,textWidth+8,26);
 			
@@ -52,7 +53,7 @@ public class HUD {
 			textWidth = g.getFontMetrics().stringWidth(startLevels);
 			g.drawString(startLevels, Game.WIDTH/2-textWidth/2,Game.HEIGHT/2+30);
 			
-			Rectangle startLevels = new Rectangle(Game.WIDTH/2-textWidth/2-4,Game.HEIGHT/2-20,textWidth+8,26);
+			startLevelsButton = new Rectangle(Game.WIDTH/2-textWidth/2-4,Game.HEIGHT/2-20,textWidth+8,26);
 			g.setColor(Color.orange);
 			g.drawRect(Game.WIDTH/2-textWidth/2-4,Game.HEIGHT/2+10,textWidth+8,26);
 			g.setColor(Color.black);
