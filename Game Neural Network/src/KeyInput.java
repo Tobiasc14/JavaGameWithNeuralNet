@@ -44,6 +44,11 @@ public class KeyInput extends KeyAdapter{
 			Game.levelBuilder = true;
 			Game.simulating = false;
 		}
+		else if(Game.levelBuilder && key == KeyEvent.VK_ENTER) {
+			
+			Game.savingLevel = true;
+			
+		}
 
 
 /**

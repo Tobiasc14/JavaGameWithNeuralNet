@@ -19,6 +19,7 @@ public class Game extends Canvas implements Runnable{
 	public static boolean levelBuilder = false;
 	public static boolean started = false;
 	public static boolean simulating = false;
+	public static boolean savingLevel = false;
 	public static String gameName = "Game; The Game";
 	
 	
