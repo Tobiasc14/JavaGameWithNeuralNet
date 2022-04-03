@@ -30,7 +30,7 @@ public class MouseInput extends MouseAdapter {
 				Game.levelBuilder = true;
 			}
 			else if(Game.newGame && hud.startLevelsButton.getBounds().contains(xPos, yPos)) {
-				Game.startExistingLevels = true;
+				Game.startExistingLevels = true;				
 			}
 			else if(Game.levelBuilder) {
 				
@@ -40,6 +40,8 @@ public class MouseInput extends MouseAdapter {
 				else if (levelParts[selection%levelParts.length].equals("enemy")) {
 					handler.addObject(new BasicEnemy(xPos, yPos, ID.BasicEnemy));
 				}
+				//Can add more else if's with a similar structure (levelParts[selection%levelParts.length].equals("thing to place"))
+				
 						
 						
 				

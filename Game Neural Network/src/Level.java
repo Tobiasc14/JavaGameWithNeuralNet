@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,35 +24,36 @@ public class Level {
 		fileExists = tempFile.exists();
 		System.out.println(fileExists);
 		
-		
-		
-		
-		
+		if (fileExists){
+			try {
+				sc = new Scanner(tempFile);
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			sc.useDelimiter("\n");
+			while(sc.hasNext()){
+				tempList.add(sc.next());
+			}
+			handler.levelList = tempList;
+		}	
 		
 		
 	}
 
 	public void tick() {
 		// TODO Auto-generated method stub
+		
 		if (Game.savingLevel) {
 			Game.savingLevel = false;
 			levelNumber++;
 			try {
 				
 				
-				//Need to scan and read existing csv file before writer is created since it deletes existing csv files contents otherwise
-				if (fileExists){
-					sc = new Scanner(new File("GameData.csv"));
-					sc.useDelimiter("\n");
-					while(sc.hasNext()){
-						tempList.add(sc.next());
-					}
-					System.out.println(tempList);
-					
-				}
 				
 				writer = new FileWriter("GameData.csv");
 				fileExists = true;
+				//Assuming there is game data, write it to the new file before adding additional level data
 				for (int i = 0; i < tempList.size(); i++) {
 					writer.append(tempList.get(i));
 					writer.append("\n");
