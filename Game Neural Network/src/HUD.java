@@ -12,7 +12,7 @@ public class HUD {
 	Font Menu = new Font("Verdana", Font.BOLD, 40);
 	Font smallText = new Font("Verdana", Font.BOLD, 18);
 	public String buildLevel = "Build a new Level";
-	public String startLevels = "Start existing levels";;
+	public String startLevels = "Start existing levels";
 	public Rectangle buildLevelButton;
 	public Rectangle startLevelsButton;
 	
@@ -53,7 +53,7 @@ public class HUD {
 			textWidth = g.getFontMetrics().stringWidth(startLevels);
 			g.drawString(startLevels, Game.WIDTH/2-textWidth/2,Game.HEIGHT/2+30);
 			
-			startLevelsButton = new Rectangle(Game.WIDTH/2-textWidth/2-4,Game.HEIGHT/2-20,textWidth+8,26);
+			startLevelsButton = new Rectangle(Game.WIDTH/2-textWidth/2-4,Game.HEIGHT/2+10,textWidth+8,26);
 			g.setColor(Color.orange);
 			g.drawRect(Game.WIDTH/2-textWidth/2-4,Game.HEIGHT/2+10,textWidth+8,26);
 			g.setColor(Color.black);
@@ -65,6 +65,10 @@ public class HUD {
 			g.drawString("Left click to place, right click to remove", Game.WIDTH/2-230,50);
 			g.drawString("Middle click mouse to switch what you place", Game.WIDTH/2-250,18+50);
 			g.drawString("Press S to start simulating the game you made", Game.WIDTH/2-240,36+50);
+			g.drawString("Press ENTER to save current positions/game state",Game.WIDTH/2-250,36+50+18);
+		}
+		else if (Game.startExistingLevels) {
+			
 		}
 		else if (Game.simulating) {
 			g.setColor(Color.orange);

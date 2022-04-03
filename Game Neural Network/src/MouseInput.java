@@ -29,6 +29,9 @@ public class MouseInput extends MouseAdapter {
 				Game.newGame = false;
 				Game.levelBuilder = true;
 			}
+			else if(Game.newGame && hud.startLevelsButton.getBounds().contains(xPos, yPos)) {
+				Game.startExistingLevels = true;
+			}
 			else if(Game.levelBuilder) {
 				
 				if (levelParts[selection%levelParts.length].equals("barrier")){
