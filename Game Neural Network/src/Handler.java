@@ -17,6 +17,7 @@ public class Handler {
 	File tempFile = new File("GameData.csv");
 	public int levelNumber = 0;
 	String tempString = "";
+	public int currentLevel;
 	
 	
 	
@@ -27,7 +28,13 @@ public class Handler {
 		else if(Game.startExistingLevels) {
 			Game.startExistingLevels = false;
 			Game.started = true;
-			loadLevel(0,levelList);							
+			loadLevel(2,levelList);							
+		}
+		else if (Game.levelBeaten) {
+			Game.levelBeaten = false;
+			levelNumber++;
+			loadLevel(levelNumber,levelList);
+			
 		}
 		else {
 			runLevel();
@@ -57,6 +64,8 @@ public class Handler {
 		}
 	}
 	public void loadLevel(int currLevel, List<String> levelList ) {
+		int count = 0;
+		boolean correctLevel = false;
 		for (int i = 0; i < levelList.size(); i++) {					
 			tempString = levelList.get(i);
 			
@@ -65,21 +74,29 @@ public class Handler {
 			//Could potentially make multiple csv files, one per level
 			//Could also find way of just separating existing file into multiple lists, each corresponding to a level
 			//Maybe make list of lists? each inner list contains singular level, outer list holds levels
-			if (tempString.substring(0,5).equals("level") && i==0) {	
+			if (tempString.substring(0,5).equals("level") && count == currLevel) {	
 				levelNumber = Integer.valueOf(tempString.substring(6));
+				count++;
+				correctLevel = true;
+				
 				
 			}
-			else if (tempString.substring(0,5).equals("level") && i != 0) {
+			else if (tempString.substring(0,5).equals("level") && count > currLevel) {
 				i = levelList.size();
+				correctLevel = false;
 			}
-			else {
-				;
+			else if (correctLevel) {
+				
 				if (tempString.split(",")[0].equals("Barrier")) {
 					object.add(new Barrier(Integer.valueOf(tempString.split(",")[1]), Integer.valueOf(tempString.split(",")[2]), ID.Barrier));	
 				}
 				else if (tempString.split(",")[0].equals("BasicEnemy")) {
 					object.add(new BasicEnemy(Integer.valueOf(tempString.split(",")[1]), Integer.valueOf(tempString.split(",")[2]), ID.BasicEnemy));
 				}
+			}
+			else if (tempString.substring(0,5).equals("level")){
+				count++;
+				correctLevel = false;
 			}
 		}
 	}
