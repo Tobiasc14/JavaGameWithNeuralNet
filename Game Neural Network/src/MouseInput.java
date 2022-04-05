@@ -30,7 +30,9 @@ public class MouseInput extends MouseAdapter {
 				Game.levelBuilder = true;
 			}
 			else if(Game.newGame && hud.startLevelsButton.getBounds().contains(xPos, yPos)) {
-				Game.startExistingLevels = true;				
+				Game.startExistingLevels = true;	
+				Game.newGame = false;
+				Game.simulating = true;
 			}
 			else if(Game.levelBuilder) {
 				

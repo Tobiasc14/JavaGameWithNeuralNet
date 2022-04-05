@@ -39,7 +39,7 @@ public class KeyInput extends KeyAdapter{
 			Game.levelBuilder = false;
 			Game.simulating = true;
 		}
-		else if(Game.simulating && key == KeyEvent.VK_S) {
+		else if(Game.simulating && key == KeyEvent.VK_S && Game.startExistingLevels == false) {
 			
 			Game.levelBuilder = true;
 			Game.simulating = false;

@@ -26,14 +26,7 @@ public class Handler {
 		}
 		else if(Game.startExistingLevels) {
 			Game.startExistingLevels = false;
-				for (int i = 0; i < levelList.size(); i++) {					
-					tempString = levelList.get(i);
-					
-					if (tempString.substring(0,5).equals("level")) {
-						levelNumber = Integer.valueOf(tempString.substring(6));
-					}
-				}
-							
+			loadLevel(0,levelList);							
 		}
 		else {
 			runLevel();
@@ -58,6 +51,33 @@ public class Handler {
 					else {
 						tempObject2.setVelocityX(-tempObject2.velocityX);
 					}
+				}
+			}
+		}
+	}
+	public void loadLevel(int currLevel, List<String> levelList ) {
+		for (int i = 0; i < levelList.size(); i++) {					
+			tempString = levelList.get(i);
+			
+			
+			//Since there are multiple levels potentially stored in the csv file, need way of loading only one at a time
+			//Could potentially make multiple csv files, one per level
+			//Could also find way of just separating existing file into multiple lists, each corresponding to a level
+			//Maybe make list of lists? each inner list contains singular level, outer list holds levels
+			if (tempString.substring(0,5).equals("level") && i==0) {	
+				levelNumber = Integer.valueOf(tempString.substring(6));
+				
+			}
+			else if (tempString.substring(0,5).equals("level") && i != 0) {
+				i = levelList.size();
+			}
+			else {
+				;
+				if (tempString.split(",")[0].equals("Barrier")) {
+					object.add(new Barrier(Integer.valueOf(tempString.split(",")[1]), Integer.valueOf(tempString.split(",")[2]), ID.Barrier));	
+				}
+				else if (tempString.split(",")[0].equals("BasicEnemy")) {
+					object.add(new BasicEnemy(Integer.valueOf(tempString.split(",")[1]), Integer.valueOf(tempString.split(",")[2]), ID.BasicEnemy));
 				}
 			}
 		}

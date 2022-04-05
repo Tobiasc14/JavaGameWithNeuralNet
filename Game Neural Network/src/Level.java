@@ -23,6 +23,7 @@ public class Level {
 		File tempFile = new File(("GameData.csv"));
 		fileExists = tempFile.exists();
 		System.out.println(fileExists);
+		String tempString = "";
 		
 		if (fileExists){
 			try {
@@ -34,6 +35,11 @@ public class Level {
 			sc.useDelimiter("\n");
 			while(sc.hasNext()){
 				tempList.add(sc.next());
+				tempString = tempList.get(tempList.size()-1);
+				
+				if (tempString.substring(0,5).equals("level")) {
+					levelNumber = Integer.valueOf(tempString.substring(6));
+				}
 			}
 			handler.levelList = tempList;
 		}	
@@ -65,7 +71,7 @@ public class Level {
 				
 				for (int i = 0; i < handler.object.size(); i++) {
 					GameObject tempObject = handler.object.get(i);					
-					writer.append(Integer.toString(tempObject.getX()) + "," + Integer.toString(tempObject.getY()) + "," + tempObject.id);
+					writer.append(tempObject.id + "," + Integer.toString(tempObject.getX()) + "," + Integer.toString(tempObject.getY()));
 					writer.append("\n");
 					writer.flush();
 				}
