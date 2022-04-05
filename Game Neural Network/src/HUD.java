@@ -67,10 +67,7 @@ public class HUD {
 			g.drawString("Press S to start simulating the game you made", Game.WIDTH/2-240,36+50);
 			g.drawString("Press ENTER to save current positions/game state",Game.WIDTH/2-250,36+50+18);
 		}
-		else if (Game.startExistingLevels) {
-			
-		}
-		else if (Game.simulating) {
+		else if (Game.simulating && !Game.started) {
 			g.setColor(Color.orange);
 			Font font1 = new Font("Verdana", Font.BOLD, 18);
 			g.setFont(smallText);

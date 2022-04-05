@@ -26,6 +26,7 @@ public class Handler {
 		}
 		else if(Game.startExistingLevels) {
 			Game.startExistingLevels = false;
+			Game.started = true;
 			loadLevel(0,levelList);							
 		}
 		else {

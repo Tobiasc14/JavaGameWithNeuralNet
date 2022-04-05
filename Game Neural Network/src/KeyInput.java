@@ -33,13 +33,13 @@ public class KeyInput extends KeyAdapter{
 			Game.newGame = false;
 			Game.levelBuilder = true;
 		}
-		else if(Game.levelBuilder && key == KeyEvent.VK_S) {
+		else if(Game.levelBuilder && key == KeyEvent.VK_S && Game.started == false) {
 			
 			Game.newGame = false;
 			Game.levelBuilder = false;
 			Game.simulating = true;
 		}
-		else if(Game.simulating && key == KeyEvent.VK_S && Game.startExistingLevels == false) {
+		else if(Game.simulating && key == KeyEvent.VK_S && Game.started == false) {
 			
 			Game.levelBuilder = true;
 			Game.simulating = false;

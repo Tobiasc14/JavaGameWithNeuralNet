@@ -33,6 +33,7 @@ public class MouseInput extends MouseAdapter {
 				Game.startExistingLevels = true;	
 				Game.newGame = false;
 				Game.simulating = true;
+				Game.started = true;
 			}
 			else if(Game.levelBuilder) {
 				
