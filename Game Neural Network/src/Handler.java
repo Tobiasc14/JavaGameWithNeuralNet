@@ -28,7 +28,7 @@ public class Handler {
 		else if(Game.startExistingLevels) {
 			Game.startExistingLevels = false;
 			Game.started = true;
-			loadLevel(0,levelList);							
+			loadLevel(2,levelList);							
 		}
 		else if (Game.levelBeaten) {
 			Game.levelBeaten = false;
@@ -87,6 +87,9 @@ public class Handler {
 				}
 				else if (tempString.split(",")[0].equals("BasicEnemy")) {
 					object.add(new BasicEnemy(Integer.valueOf(tempString.split(",")[1]), Integer.valueOf(tempString.split(",")[2]), ID.BasicEnemy));
+				}
+				else if (tempString.split(",")[0].equals("Player")) {
+					object.add(new Player(Integer.valueOf(tempString.split(",")[1]), Integer.valueOf(tempString.split(",")[2]), ID.Player));
 				}
 			}
 			else if (tempString.substring(0,5).equals("level")){

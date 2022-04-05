@@ -7,7 +7,7 @@ public class MouseInput extends MouseAdapter {
 	private Handler handler;
 	private HUD hud;
 	long timeClick;
-	String [] levelParts = {"barrier","enemy"};
+	String [] levelParts = {"barrier","enemy", "player"};
 	int selection = 0;
 	
 	
@@ -43,6 +43,9 @@ public class MouseInput extends MouseAdapter {
 				else if (levelParts[selection%levelParts.length].equals("enemy")) {
 					handler.addObject(new BasicEnemy(xPos, yPos, ID.BasicEnemy));
 				}
+				else if (levelParts[selection%levelParts.length].equals("player")) {
+					handler.addObject(new Player(xPos, yPos, ID.Player));
+				}
 				//Can add more else if's with a similar structure (levelParts[selection%levelParts.length].equals("thing to place"))
 				
 						
@@ -68,7 +71,7 @@ public class MouseInput extends MouseAdapter {
 				for(int i = 0; i < handler.object.size(); i++) {
 					GameObject tempObject =  handler.object.get(i);
 					//If you right clicked on an existing barrier or enemy, remove it
-					if((tempObject.id.equals(ID.Barrier) ||tempObject.id.equals(ID.BasicEnemy))&& tempObject.getBounds().contains(xPos, yPos)){
+					if((tempObject.id.equals(ID.Barrier) ||tempObject.id.equals(ID.BasicEnemy) || tempObject.id.equals(ID.Player))&& tempObject.getBounds().contains(xPos, yPos)){
 						handler.object.remove(i);
 						i--;
 					}
