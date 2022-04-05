@@ -28,7 +28,7 @@ public class Handler {
 		else if(Game.startExistingLevels) {
 			Game.startExistingLevels = false;
 			Game.started = true;
-			loadLevel(2,levelList);							
+			loadLevel(0,levelList);							
 		}
 		else if (Game.levelBeaten) {
 			Game.levelBeaten = false;
@@ -69,13 +69,8 @@ public class Handler {
 		for (int i = 0; i < levelList.size(); i++) {					
 			tempString = levelList.get(i);
 			
-			
-			//Since there are multiple levels potentially stored in the csv file, need way of loading only one at a time
-			//Could potentially make multiple csv files, one per level
-			//Could also find way of just separating existing file into multiple lists, each corresponding to a level
-			//Maybe make list of lists? each inner list contains singular level, outer list holds levels
 			if (tempString.substring(0,5).equals("level") && count == currLevel) {	
-				levelNumber = Integer.valueOf(tempString.substring(6));
+				levelNumber = Integer.valueOf(tempString.substring(6,7));
 				count++;
 				correctLevel = true;
 				

@@ -38,7 +38,7 @@ public class Level {
 				tempString = tempList.get(tempList.size()-1);
 				
 				if (tempString.substring(0,5).equals("level")) {
-					levelNumber = Integer.valueOf(tempString.substring(6));
+					levelNumber = Integer.valueOf(tempString.substring(6,7));
 				}
 			}
 			handler.levelList = tempList;
