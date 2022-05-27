@@ -1,13 +1,20 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 public class Player extends GameObject{ 
 	
+	Image skin;
+	BufferedImage image;
 	
-	
-	
+
 	public Player(int x, int y, ID id) {
 		super(x, y, id);
 		// TODO Auto-generated constructor stub
@@ -15,9 +22,18 @@ public class Player extends GameObject{
 		
 		//setX(30);
 		//setY(30);
+		
+		try {
+			this.skin = ImageIO.read(new File("images/beakers.jpg"));
+			this.image = (BufferedImage) skin;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		/**
 		velocityX = (int)(6.6*Math.random());
 		velocityY = (int)(6.6*Math.random());
+		
 */
 
 	}
@@ -49,8 +65,10 @@ public class Player extends GameObject{
 
 	@Override
 	public void render(Graphics g) {
-		// TODO Auto-generated method stub
 		Graphics2D g2 = (Graphics2D)g;
+		
+		// TODO Auto-generated method stub
+		
 		g2.setColor(Color.BLACK);
 		g2.draw(getBounds());
 		
@@ -60,6 +78,9 @@ public class Player extends GameObject{
 		g.setColor(Color.black);
 		g.fillOval(x+4, y+10, 5, 5);
 		g.fillOval(x+25, y+10, 5, 5);
+		
+		//If I design a skin in paint or something I can just upload it here
+		//g2.drawImage(image, x, y, null);
 		
 	}
 
