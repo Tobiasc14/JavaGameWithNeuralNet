@@ -38,7 +38,7 @@ public class MouseInput extends MouseAdapter {
 			else if(Game.levelBuilder) {
 				
 				if (levelParts[selection%levelParts.length].equals("barrier")){
-					handler.addObject(new Barrier(xPos, yPos, ID.Barrier));	
+					handler.addObject(new Barrier(xPos-30, yPos-30, ID.Barrier));	
 				}
 				else if (levelParts[selection%levelParts.length].equals("enemy")) {
 					handler.addObject(new BasicEnemy(xPos, yPos, ID.BasicEnemy));
