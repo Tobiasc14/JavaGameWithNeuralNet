@@ -1,7 +1,14 @@
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 public class Game extends Canvas implements Runnable{
 
@@ -23,7 +30,8 @@ public class Game extends Canvas implements Runnable{
 	public static boolean startExistingLevels = false;
 	public static boolean levelBeaten = false;
 	public static String gameName = "Game; The Game";
-	
+	Image skin;
+	BufferedImage image;
 	
 	
 	
@@ -37,6 +45,13 @@ public class Game extends Canvas implements Runnable{
 		this.addMouseListener(new MouseInput(handler, hud));
 		
 		new Window(WIDTH, HEIGHT, gameName,this);
+		try {
+			this.skin = ImageIO.read(new File("images/Map Background.png"));
+			this.image = (BufferedImage) skin;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -136,12 +151,16 @@ public class Game extends Canvas implements Runnable{
 		 }
 		 
 		 Graphics g = bs.getDrawGraphics();
+		 Graphics2D g2 = (Graphics2D) g;
+		 /**
 		 g.setColor(Color.gray);
 		 g.fillRect(0, 0, WIDTH, HEIGHT);
 		 
+		 
+		 */
+		 g2.drawImage(image, 0, 0, null);
 		 handler.render(g);
 		 hud.render(g);
-		 
 		 g.dispose();
 		 bs.show();
 	 }

@@ -54,7 +54,7 @@ public class BasicEnemy extends GameObject {
 	public void render(Graphics g) {
 		
 		Graphics2D g2 = (Graphics2D) g;
-		/**
+		
 		//g2.draw(getBounds());
 		
 		g.setColor(Color.BLACK);
@@ -68,8 +68,8 @@ public class BasicEnemy extends GameObject {
 		g.drawLine(x+22, y+8, x+29, y+6);
 		g.fillOval(x+4, y+10, 5, 5);
 		g.fillOval(x+25, y+10, 5, 5);
-		*/
-		g2.drawImage(image, x, y, null);
+		
+		//g2.drawImage(image, x, y, null);
 		
 	}
 
