@@ -18,7 +18,7 @@ public class Player extends GameObject{
 
 	public Player(int x, int y, ID id) {
 		super(x, y, id);
-		health = 200;
+		health = 2000;
 		// TODO Auto-generated constructor stub
 		//setTime(0);
 		
@@ -40,6 +40,9 @@ public class Player extends GameObject{
 	}
 	public int getHealth() {
 		return health;
+	}
+	public void loseHealth(int healthLost) {
+		health= health-healthLost;
 	}
 
 	@Override

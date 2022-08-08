@@ -72,7 +72,16 @@ public class Handler {
 			}
 			//Collision detection
 			for(int j = 0; j < object.size(); j++) {
-				GameObject tempObject2 = object.get(j);			
+				GameObject tempObject2 = object.get(j);	
+				
+				if(tempObject.getID().equals(ID.BasicEnemy)) {
+					if(tempObject.getBounds().intersects(getPlayer().getBounds())) {
+						getPlayer().loseHealth(1);
+						
+					}
+				}
+				
+				
 				if(tempObject.getID().equals(ID.Barrier)) {				
 					
 					//If barrier is intersecting player
