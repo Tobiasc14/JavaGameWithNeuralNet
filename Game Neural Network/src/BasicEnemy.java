@@ -13,7 +13,7 @@ public class BasicEnemy extends GameObject {
 	
 	Image skin;
 	BufferedImage image;
-
+	
 	public BasicEnemy(int x, int y, ID id) {
 		super(x, y, id);
 		// TODO Auto-generated constructor stub
@@ -38,6 +38,9 @@ public class BasicEnemy extends GameObject {
 
 	
 	public void tick() {
+		//This reverses the enemies motion when it collides with a barrier
+		
+		
 		//This reverses the enemies motion when it collides with edge of window
 		if(x>Game.WIDTH-32||x<0){
 			velocityX=-velocityX;

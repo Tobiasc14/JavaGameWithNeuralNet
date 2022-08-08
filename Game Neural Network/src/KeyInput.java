@@ -49,6 +49,21 @@ public class KeyInput extends KeyAdapter{
 			Game.savingLevel = true;
 			
 		}
+		else if(Game.started) {
+			if (key == KeyEvent.VK_W){
+				handler.up = true;
+				
+			}
+			if (key == KeyEvent.VK_A){
+				handler.left = true;
+			}
+			if (key == KeyEvent.VK_D){
+				handler.right = true;
+			}
+			if (key == KeyEvent.VK_S){
+				handler.down = true;
+			}
+		}
 
 
 /**
@@ -115,48 +130,23 @@ public class KeyInput extends KeyAdapter{
 	}
 	public void keyReleased(KeyEvent e){
 		int key = e.getKeyCode();
-		
+		if(Game.started) {
+			if (key == KeyEvent.VK_W){
+				handler.up = false;
+				
+			}
+			if (key == KeyEvent.VK_A){
+				handler.left =false;
+			}
+			if (key == KeyEvent.VK_D){
+				handler.right = false;
+			}
+			if (key == KeyEvent.VK_S){
+				handler.down = false;
+			}
+		}
 		/**
-		for (int i =0; i < handler.object.size();i++){
-			GameObject tempObject = handler.object.get(i);
-			if(tempObject.getID()== ID.Player){
-				if(key == KeyEvent.VK_W){
-					uP=false;
-					if(dP){
-						tempObject.setVelocityY(2);
-					}
-					else{
-						tempObject.setVelocityY(0);
-					}
-				}
-				if(key == KeyEvent.VK_A){
-					lP=false;
-					if(rP){
-						tempObject.setVelocityX(2);
-					}
-					else{
-						tempObject.setVelocityX(0);
-					}
-
-				}
-				if(key == KeyEvent.VK_S){
-					dP=false;
-					if(uP){
-						tempObject.setVelocityY(-2);
-					}
-					else{
-						tempObject.setVelocityY(0);
-					}
-
-				}
-				if(key == KeyEvent.VK_D){
-					rP=false;
-					if(lP){
-						tempObject.setVelocityX(-2);
-					}
-					else{
-						tempObject.setVelocityX(0);
-					}
+		s
 
 				}
 				if(key == KeyEvent.VK_SPACE){

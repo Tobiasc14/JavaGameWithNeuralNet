@@ -12,14 +12,16 @@ public abstract class GameObject {
 	protected int velocityX, velocityY;
 	protected int gameWidth;
 	protected int gameHeight;
+	Handler handler;
 	
 	
 	public GameObject(int x, int y, ID id){
-		this.gameWidth = gameWidth;
-		this.gameHeight = gameHeight;
+		
 		this.x = x;
 		this.y = y;
 		this.id = id;
+		
+		
 		
 	}
 	

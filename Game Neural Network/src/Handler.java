@@ -18,6 +18,10 @@ public class Handler {
 	public int levelNumber = 0;
 	String tempString = "";
 	public int currentLevel;
+	boolean up = false;
+	boolean down= false;
+	boolean left = false;
+	boolean right = false;
 	
 	
 	
@@ -28,7 +32,7 @@ public class Handler {
 		else if(Game.startExistingLevels) {
 			Game.startExistingLevels = false;
 			Game.started = true;
-			loadLevel(0,levelList);							
+			loadLevel(2,levelList);							
 		}
 		else if (Game.levelBeaten) {
 			Game.levelBeaten = false;
@@ -44,7 +48,27 @@ public class Handler {
 	public void runLevel() {
 		for(int i = 0; i < object.size();i++){
 			GameObject tempObject = object.get(i);
-			tempObject.tick();
+			if (tempObject.id.equals(ID.Player)){
+				if(up) {
+					tempObject.setY(tempObject.getY()-2);
+				}
+				if(down) {
+					tempObject.setY(tempObject.getY()+2);
+				}
+				if(left) {
+					tempObject.setX(tempObject.getX()-2);
+				}
+				if(right) {
+					tempObject.setX(tempObject.getX()+2);
+				}
+				else {
+					tempObject.setVelocityX(0);
+					tempObject.setVelocityY(0);
+				}
+				
+				
+				
+			}
 			for(int j = 0; j < object.size(); j++) {
 				GameObject tempObject2 = object.get(j);				
 			
@@ -61,6 +85,7 @@ public class Handler {
 					}
 				}
 			}
+			tempObject.tick();
 		}
 	}
 	public void loadLevel(int currLevel, List<String> levelList ) {

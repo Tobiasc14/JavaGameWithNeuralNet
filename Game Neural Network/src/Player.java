@@ -41,8 +41,8 @@ public class Player extends GameObject{
 	@Override
 	public void tick() {
 		
-		x+=velocityX;
-		y+=velocityY;		
+		//x+=velocityX;
+		//y+=velocityY;		
 		
 		x = Game.clamp(x, 0, Game.WIDTH-36);
 		y = Game.clamp(y, 0, Game.HEIGHT-89);
