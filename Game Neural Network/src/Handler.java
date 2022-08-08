@@ -32,7 +32,7 @@ public class Handler {
 		else if(Game.startExistingLevels) {
 			Game.startExistingLevels = false;
 			Game.started = true;
-			loadLevel(2,levelList);							
+			loadLevel(3,levelList);							
 		}
 		else if (Game.levelBeaten) {
 			Game.levelBeaten = false;
@@ -48,6 +48,7 @@ public class Handler {
 	public void runLevel() {
 		for(int i = 0; i < object.size();i++){
 			GameObject tempObject = object.get(i);
+			//Players movement
 			if (tempObject.id.equals(ID.Player)){
 				if(up) {
 					tempObject.setY(tempObject.getY()-2);
@@ -64,29 +65,52 @@ public class Handler {
 				else {
 					tempObject.setVelocityX(0);
 					tempObject.setVelocityY(0);
-				}
-				
-				
-				
+				}			
+							
 			}
+			//Collision detection
 			for(int j = 0; j < object.size(); j++) {
-				GameObject tempObject2 = object.get(j);				
-			
-				//If Enemy collides with a barrier					
-				if (tempObject.getID().equals(ID.Barrier)&& !(tempObject2.getID().equals(ID.Barrier)) &&tempObject2.getBounds().intersects(tempObject.getBounds())) {
-					//This will be what to do if the barrier intersects something else
-					tempObject2.setX(tempObject2.x-tempObject2.getVelocityX());
-					if(tempObject.getBounds().intersects(tempObject2.getBounds())) {
-						tempObject2.setY(tempObject2.y-tempObject2.getVelocityY());
-						tempObject2.setVelocityY(-tempObject2.velocityY);
+				GameObject tempObject2 = object.get(j);			
+				if(tempObject.getID().equals(ID.Barrier)) {				
+					
+					//If barrier is intersecting player
+					//undo movement motion					
+					if(tempObject2.getID().equals(ID.Player)&&tempObject.getBounds().intersects(tempObject2.getBounds())) {
+						if(up) {
+							tempObject2.setY(tempObject2.getY()+2);
+						}
+						if(down) {
+							tempObject2.setY(tempObject2.getY()-2);
+						}
+						if(left) {
+							tempObject2.setX(tempObject2.getX()+2);
+						}
+						if(right) {
+							tempObject2.setX(tempObject2.getX()-2);
+						}						
 					}
-					else {
-						tempObject2.setVelocityX(-tempObject2.velocityX);
+					
+					//If Enemy collides with a barrier, change direction of velocity and keep moving
+					if(tempObject2.getID().equals(ID.BasicEnemy)&&tempObject.getBounds().intersects(tempObject2.getBounds())) {
+						tempObject2.setX(tempObject2.x-tempObject2.getVelocityX());
+						if(tempObject.getBounds().intersects(tempObject2.getBounds())) {
+							tempObject2.setY(tempObject2.y-tempObject2.getVelocityY());
+							tempObject2.setVelocityY(-tempObject2.velocityY);
+						}
+						else {
+							tempObject2.setVelocityX(-tempObject2.velocityX);
+						}
 					}
 				}
 			}
 			tempObject.tick();
+				
+				
 		}
+	
+			
+			
+		
 	}
 	public void loadLevel(int currLevel, List<String> levelList ) {
 		int count = 0;

@@ -30,19 +30,16 @@ public class Player extends GameObject{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		/**
-		velocityX = (int)(6.6*Math.random());
-		velocityY = (int)(6.6*Math.random());
 		
-*/
+		velocityX = 2;
+		velocityY = 2;
+		
 
 	}
 
 	@Override
 	public void tick() {
 		
-		//x+=velocityX;
-		//y+=velocityY;		
 		
 		x = Game.clamp(x, 0, Game.WIDTH-36);
 		y = Game.clamp(y, 0, Game.HEIGHT-89);
