@@ -33,7 +33,7 @@ public class Handler {
 		else if(Game.startExistingLevels) {
 			Game.startExistingLevels = false;
 			Game.started = true;
-			loadLevel(3,levelList);							
+			loadLevel(4,levelList);							
 		}
 		else if (Game.levelBeaten) {
 			Game.levelBeaten = false;
