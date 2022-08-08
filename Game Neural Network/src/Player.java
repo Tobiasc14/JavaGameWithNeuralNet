@@ -13,10 +13,12 @@ public class Player extends GameObject{
 	
 	Image skin;
 	BufferedImage image;
+	public int health;
 	
 
 	public Player(int x, int y, ID id) {
 		super(x, y, id);
+		health = 200;
 		// TODO Auto-generated constructor stub
 		//setTime(0);
 		
@@ -35,6 +37,9 @@ public class Player extends GameObject{
 		velocityY = 2;
 		
 
+	}
+	public int getHealth() {
+		return health;
 	}
 
 	@Override

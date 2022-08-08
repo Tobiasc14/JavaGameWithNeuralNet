@@ -25,6 +25,7 @@ public class Handler {
 	
 	
 	
+	
 	public void tick() {
 		if(Game.levelBuilder && Game.started == false) {
 			
@@ -44,6 +45,7 @@ public class Handler {
 			runLevel();
 			
 		}
+		
 	}
 	public void runLevel() {
 		for(int i = 0; i < object.size();i++){
@@ -169,6 +171,14 @@ public class Handler {
 			removeObject(tempObject);
 		}
 		
+	}
+	public Player getPlayer() {
+		for (int i = 0; i < this.object.size();i++) {
+			if (object.get(i).id.equals(ID.Player)){
+				return (Player) object.get(i);				
+			}
+		}
+		return null;
 	}
 
 }

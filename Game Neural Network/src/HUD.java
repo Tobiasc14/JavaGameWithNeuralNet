@@ -2,13 +2,14 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.io.IOException;
 
 public class HUD {
 	
 	private Handler handler;
 	private Level level;
 	long curTime = System.currentTimeMillis();
-	int health = 100;
+	int health;
 	Font Menu = new Font("Verdana", Font.BOLD, 40);
 	Font smallText = new Font("Verdana", Font.BOLD, 18);
 	public String buildLevel = "Build a new Level";
@@ -21,6 +22,7 @@ public class HUD {
 		// TODO Auto-generated constructor stub
 		this.handler = handler;
 		this.level = level;
+		
 		
 		
 	}
@@ -76,8 +78,15 @@ public class HUD {
 		else if(Game.started) {
 			g.setColor(Color.red);
 			g.fillRect(10, 10, 200, 20);
-			g.setColor(Color.green);
-			g.fillRect(10, 10, health, 20);
+			g.setColor(Color.green);			
+			if(handler.getPlayer() == null) {
+				health = 0;
+			}			
+			else {
+				health = handler.getPlayer().getHealth();
+			}
+			health = 200;
+			g.fillRect(10, 10, health, 20);			
 			g.setColor(Color.white);
 			g.drawRect(9, 9, 201, 21);
 			
