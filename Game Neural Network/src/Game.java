@@ -29,6 +29,7 @@ public class Game extends Canvas implements Runnable{
 	public static boolean savingLevel = false;
 	public static boolean startExistingLevels = false;
 	public static boolean levelBeaten = false;
+	public static boolean isAlive = true;
 	public static String gameName = "Game; The Game";
 	Image skin;
 	BufferedImage image;

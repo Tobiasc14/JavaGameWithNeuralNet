@@ -12,7 +12,7 @@ public abstract class GameObject {
 	protected int velocityX, velocityY;
 	protected int gameWidth;
 	protected int gameHeight;
-	Handler handler;
+	boolean remove = false;
 	
 	
 	public GameObject(int x, int y, ID id){

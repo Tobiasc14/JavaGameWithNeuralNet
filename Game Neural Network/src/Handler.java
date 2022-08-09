@@ -50,8 +50,11 @@ public class Handler {
 	public void runLevel() {
 		for(int i = 0; i < object.size();i++){
 			GameObject tempObject = object.get(i);
+			if (tempObject.remove) {
+				this.removeObject(tempObject);				
+			}			
 			//Players movement
-			if (tempObject.id.equals(ID.Player)){
+			else if (tempObject.id.equals(ID.Player)){
 				if(up) {
 					tempObject.setY(tempObject.getY()-2);
 				}
@@ -71,48 +74,52 @@ public class Handler {
 							
 			}
 			//Collision detection
-			for(int j = 0; j < object.size(); j++) {
-				GameObject tempObject2 = object.get(j);	
-				
-				if(tempObject.getID().equals(ID.BasicEnemy)) {
-					if(tempObject.getBounds().intersects(getPlayer().getBounds())) {
-						getPlayer().loseHealth(1);
-						
-					}
-				}
-				
-				
-				if(tempObject.getID().equals(ID.Barrier)) {				
+			
+			else {
+				for(int j = 0; j < object.size(); j++) {
+					GameObject tempObject2 = object.get(j);	
 					
-					//If barrier is intersecting player
-					//undo movement motion					
-					if(tempObject2.getID().equals(ID.Player)&&tempObject.getBounds().intersects(tempObject2.getBounds())) {
-						if(up) {
-							tempObject2.setY(tempObject2.getY()+2);
-						}
-						if(down) {
-							tempObject2.setY(tempObject2.getY()-2);
-						}
-						if(left) {
-							tempObject2.setX(tempObject2.getX()+2);
-						}
-						if(right) {
-							tempObject2.setX(tempObject2.getX()-2);
-						}						
-					}
-					
-					//If Enemy collides with a barrier, change direction of velocity and keep moving
-					if(tempObject2.getID().equals(ID.BasicEnemy)&&tempObject.getBounds().intersects(tempObject2.getBounds())) {
-						tempObject2.setX(tempObject2.x-tempObject2.getVelocityX());
+					if(tempObject.getID().equals(ID.BasicEnemy)&& tempObject2.getID().equals(ID.Player)) {
 						if(tempObject.getBounds().intersects(tempObject2.getBounds())) {
-							tempObject2.setY(tempObject2.y-tempObject2.getVelocityY());
-							tempObject2.setVelocityY(-tempObject2.velocityY);
+							getPlayer().loseHealth(1);
+							
 						}
-						else {
-							tempObject2.setVelocityX(-tempObject2.velocityX);
+					}
+					
+					
+					if(tempObject.getID().equals(ID.Barrier)) {				
+						
+						//If barrier is intersecting player
+						//undo movement motion					
+						if(tempObject2.getID().equals(ID.Player)&&tempObject.getBounds().intersects(tempObject2.getBounds())) {
+							if(up) {
+								tempObject2.setY(tempObject2.getY()+2);
+							}
+							if(down) {
+								tempObject2.setY(tempObject2.getY()-2);
+							}
+							if(left) {
+								tempObject2.setX(tempObject2.getX()+2);
+							}
+							if(right) {
+								tempObject2.setX(tempObject2.getX()-2);
+							}						
+						}
+						
+						//If Enemy collides with a barrier, change direction of velocity and keep moving
+						if(tempObject2.getID().equals(ID.BasicEnemy)&&tempObject.getBounds().intersects(tempObject2.getBounds())) {
+							tempObject2.setX(tempObject2.x-tempObject2.getVelocityX());
+							if(tempObject.getBounds().intersects(tempObject2.getBounds())) {
+								tempObject2.setY(tempObject2.y-tempObject2.getVelocityY());
+								tempObject2.setVelocityY(-tempObject2.velocityY);
+							}
+							else {
+								tempObject2.setVelocityX(-tempObject2.velocityX);
+							}
 						}
 					}
 				}
+				
 			}
 			tempObject.tick();
 				

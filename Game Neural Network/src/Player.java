@@ -18,7 +18,7 @@ public class Player extends GameObject{
 
 	public Player(int x, int y, ID id) {
 		super(x, y, id);
-		health = 2000;
+		health = 200;
 		// TODO Auto-generated constructor stub
 		//setTime(0);
 		
@@ -48,6 +48,12 @@ public class Player extends GameObject{
 	@Override
 	public void tick() {
 		
+		if (health<=0) {
+			this.remove = true;
+			System.out.println("Removing Object");
+			Game.isAlive = false;
+		}
+	
 		
 		x = Game.clamp(x, 0, Game.WIDTH-36);
 		y = Game.clamp(y, 0, Game.HEIGHT-89);

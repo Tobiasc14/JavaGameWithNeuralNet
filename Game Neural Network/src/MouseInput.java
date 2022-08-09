@@ -52,6 +52,11 @@ public class MouseInput extends MouseAdapter {
 						
 				
 			}
+			else if(Game.started && Game.isAlive) {
+				int px = handler.getPlayer().getX()+20;
+				int py = handler.getPlayer().getY()+40;
+				handler.addObject(new Bullet(px, py, ID.Bullet, xPos, yPos));
+			}
 			
 			
 			//These two get the current player coordinates

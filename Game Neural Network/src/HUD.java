@@ -86,7 +86,7 @@ public class HUD {
 				health = handler.getPlayer().getHealth();
 			}
 			
-			g.fillRect(10, 10, (int)health/10, 20);			
+			g.fillRect(10, 10, (int)health, 20);			
 			g.setColor(Color.white);
 			g.drawRect(9, 9, 201, 21);
 			
