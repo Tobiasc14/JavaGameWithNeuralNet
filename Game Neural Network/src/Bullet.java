@@ -42,8 +42,8 @@ public class Bullet extends GameObject{
 		x = x+xVelocity;
 		y = y+yVelocity;
 		
-		x = Game.clamp(x, 0, Game.WIDTH);
-		y = Game.clamp(y, 0, Game.HEIGHT);
+		x = Game.clamp(x, -10, Game.WIDTH+20);
+		y = Game.clamp(y, -10, Game.HEIGHT+20);
 	}
 
 	@Override

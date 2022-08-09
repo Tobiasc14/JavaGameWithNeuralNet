@@ -79,15 +79,24 @@ public class Handler {
 				for(int j = 0; j < object.size(); j++) {
 					GameObject tempObject2 = object.get(j);	
 					
-					if(tempObject.getID().equals(ID.BasicEnemy)&& tempObject2.getID().equals(ID.Player)) {
-						if(tempObject.getBounds().intersects(tempObject2.getBounds())) {
-							getPlayer().loseHealth(1);
-							
+					if(tempObject.getID().equals(ID.BasicEnemy)){
+						if (tempObject2.getID().equals(ID.Player)) {
+							if(tempObject.getBounds().intersects(tempObject2.getBounds())) {
+								getPlayer().loseHealth(1);
+								
+							}
 						}
+						if (tempObject2.getID().equals(ID.Bullet)) {
+							if(tempObject.getBounds().intersects(tempObject2.getBounds())) {
+								tempObject.remove = true;
+								tempObject2.remove = true;
+							}
+						}
+						
 					}
 					
 					
-					if(tempObject.getID().equals(ID.Barrier)) {				
+					else if(tempObject.getID().equals(ID.Barrier)) {				
 						
 						//If barrier is intersecting player
 						//undo movement motion					
@@ -105,9 +114,13 @@ public class Handler {
 								tempObject2.setX(tempObject2.getX()-2);
 							}						
 						}
+						//if bullet intersects with barrier, remove bullet
+						else if(tempObject2.getID().equals(ID.Bullet) && tempObject.getBounds().intersects(tempObject2.getBounds())) {
+							tempObject2.remove = true;
+						}
 						
 						//If Enemy collides with a barrier, change direction of velocity and keep moving
-						if(tempObject2.getID().equals(ID.BasicEnemy)&&tempObject.getBounds().intersects(tempObject2.getBounds())) {
+						else if(tempObject2.getID().equals(ID.BasicEnemy)&&tempObject.getBounds().intersects(tempObject2.getBounds())) {
 							tempObject2.setX(tempObject2.x-tempObject2.getVelocityX());
 							if(tempObject.getBounds().intersects(tempObject2.getBounds())) {
 								tempObject2.setY(tempObject2.y-tempObject2.getVelocityY());
